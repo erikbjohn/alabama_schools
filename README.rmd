@@ -1,0 +1,81 @@
+---
+title: "Alabama Schools Project"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is a documentation for the Alabama schools project. 
+
+# Background 
+
+The background is taken from `Failing School Story' by Elizabeth Mojica (emojica@crimson.ua.edu).
+
+# Mojica Discussion
+
+## Definition of a failing school:
+1. Is in the bottom 6% of public Alabama School for year based on the state’s standardized assessment in math and reading. 
+    a. Students are tested in reading and math in grades 3-8 with the Aspire Assessment 
+    b. Students are tested in reading and math in the 10th grade with the Aspire Assessment and the Alabama Alternate Assessment. 
+2. Is designated as failing by the State Superintendent of Education
+
+### Questions: 
+
+1. Can we get Assessment data (aggregate/micro) from Aspire or Alabama Alternate Assessment? 
+2. What are the differences between Aspire Assessment and Alabama Alternate?
+3. Role of Superintendent (How bound by scores, other factors to consider... Political motivations?)
+
+## Options for students in a failing school:
+
+1. Students may remain and continue enrolled in the failing school
+2. Students can request to transfer to a non-failing school in their same district
+    a. If available, the student may receive transportation assistance 
+3. Students can request to transfer to a non-failing school outside their district with permission from outside district 
+    a. The students’ family is solely responsible for all transportation needs 
+4. Students can request to transfer to any non-failing, nonpublic Alabama School that is willing to accept them 
+
+### Questions:
+
+1. Regarding (4) who pays? private school options?
+
+## Barriers to entry for students in failing schools:
+
+1. Desegregation Laws
+    a. There is current debate on whether these laws should continue to be taken into consideration. 
+2. Zoned schools based on living arrangements
+    a. After all, the students leaving theses schools do not typically contribute financially to these schools. 
+3. Crowded Schools
+    a. A good number of non-failing schools in Alabama are already filled to capacity and therefore can no longer accept transfers whether from a failing school or not.
+4. Number of Nearby Schools
+    a. The higher the number of schools available for the student to attend the more options a students’ family may have in deciding where to educate the child. 
+
+### Questions:
+
+1. Regarding (1) desegregation laws are the key.
+2. Data for this would be amazing
+
+## Do students exercise options?
+
+These numbers are reported biennially.  
+1. In 2016 only 2.2% of students were able to successfully transfer from a failing school. 
+2. The number of applicants denied goes unreported. 
+
+These circumstances that discourage transfers matter because they result in many of the students in failing schools to remain in those schools. This results in lower quality of education for them. They are then condemned to that lower quality of education until something or someone greater than them acts on the issue.
+
+### Questions:
+
+1. Who is accepted? Data on acceptance?
+
+## Likelihood of school closing:
+
+1. How long has the school been failing?
+2. How many other schools are available to the students?
+3. Population 
+4. Per Capita Income 
+5. School Districts Budget
+6. Legislations Recently Passed
+
+
+
