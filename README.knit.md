@@ -3,9 +3,7 @@ title: "Alabama Schools Project"
 output: pdf_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+
 
 This is a documentation for the Alabama schools project. 
 
@@ -96,18 +94,17 @@ These circumstances that discourage transfers matter because they result in many
 
 Gather the raw school file to be in long rather than wide format. Here is a subset of how the long format will look.
 
-```{r schoolsGather, echo=FALSE}
-dt <- data.table::fread('~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel.csv', header = TRUE)
-dt.cols <- which(names(dt) %in% c('School Name', 'School District', as.character(2007:2017)))
-dt <- dt[, dt.cols, with=FALSE]
-data.table::setnames(dt, c('School Name', 'School District'), c('SchoolName', 'SchoolDistrict'))
-dt <- dt[!SchoolDistrict == '']
-dt <- tidyr::gather(dt, Year, Status, as.character(2007:2017))
-openxlsx::write.xlsx(dt, file='~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel Reformat.xlsx')
-knitr::kable(head(dt))
-```
 
-As of right now there are `r paste0(table(dt$Status), collapse=', ')` of status `r paste0(names(table(dt$Status)), collapse=', ')`. Where Status=0 is not failing, Status=1 is failing.
+SchoolName                          SchoolDistrict        Year    Status
+----------------------------------  --------------------  -----  -------
+Autaugaville School                 Autaugaville County   2007         0
+Barbour County High School          Barbour County        2007         0
+Barbour County Junior High School   Barbour County        2007         0
+West Blocton High School            Bibb County           2007         0
+Bullock County High School          Bullock County        2007         0
+Lafayette High School               Chambers County       2007         0
+
+As of right now there are 545, 241 of status 0, 1. Where Status=0 is not failing, Status=1 is failing.
 
 \clearpage
 
