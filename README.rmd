@@ -77,5 +77,14 @@ These circumstances that discourage transfers matter because they result in many
 5. School Districts Budget
 6. Legislations Recently Passed
 
+# Data Work 
 
+The raw school file need to be gathered.
+
+```{r schoolsGather}
+dt <- data.table::fread('~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel.csv', header = TRUE)
+dt.cols <- which(names(dt) %in% c('School Name', 'School District', 'County Population', 'Median Per Capita Income', as.character(2002:2017)))
+dt <- dt[, dt.cols, with=FA]
+
+```
 
