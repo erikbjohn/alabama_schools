@@ -115,4 +115,4 @@ As of right now there are `r paste0(table(dt$Status), collapse=', ')` of status 
 
 ## 11/30/2017 Razzolini, Ross, Johnson
 
-![Johnson Notes for 11/30/2017](https://www.dropbox.com/s/w62zvwbc0qi62xo/IMG_20171130_141004.jpg?dl=1)
+![Johnson Notes for 11/30/2017](Notes/notes_11_30_2017.jpg)
