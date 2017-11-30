@@ -9,6 +9,38 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This is a documentation for the Alabama schools project. 
 
+# TODO List
+
+## Johnson
+1. Gather the xlsx spread sheet to Mojica $\checkmark$ *[linkLocation](https://www.dropbox.com/s/ppctui3w1tpye05/Failing%20Schools%20Panel%20Reformat.xlsx?dl=0)*
+2. Merge in data such as graduation rates, etc. *Waiting for Finnegan's data work*
+
+##  Mojica
+
+### Spreadsheet updates
+
+1. Add rows to the xlsx spreadsheet to include schools that never were failing and schools that entered later (This is only for public schools). 
+2. Add rows/update rows for schools on their closing year with a `2' in the *Status* field. 
+3. Add columns to the xlsx spreadsheet to include school type (magnet, k-12 10-12, magnet type, etc.)
+
+### Data search (See if can locate information on )
+
+These do not need to be added to the spreadsheet yet but would be really useful to try and track down.
+
+1. Disciplinary Data (Expulsions/Suspensions)
+2. College Attendance rates
+3. Pregnancy, etc. rate.
+4. Homeschooling (not sure if reported by county or school district...)
+5. AP classes by school.
+6. Data on what happens to students after their schools close...
+
+### Written Work
+
+1. A page or so about own experience (schools/years/outcomes/general observations)
+2. Overview of the HS report that is now missing. Basic ideas/insights etc.
+
+\clearpage
+
 # Background 
 
 The background is taken from `Failing School Story' by Elizabeth Mojica (emojica@crimson.ua.edu).
@@ -77,14 +109,17 @@ These circumstances that discourage transfers matter because they result in many
 5. School Districts Budget
 6. Legislations Recently Passed
 
-# Data Work 
+# Data Work Description
 
-The raw school file need to be gathered.
+Gather the raw school file to be in long rather than wide format.
 
 ```{r schoolsGather}
 dt <- data.table::fread('~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel.csv', header = TRUE)
-dt.cols <- which(names(dt) %in% c('School Name', 'School District', 'County Population', 'Median Per Capita Income', as.character(2002:2017)))
-dt <- dt[, dt.cols, with=FA]
-
+dt.cols <- which(names(dt) %in% c('School Name', 'School District', as.character(2007:2017)))
+dt <- dt[, dt.cols, with=FALSE]
+data.table::setnames(dt, c('School Name', 'School District'), c('SchoolName', 'SchoolDistrict'))
+dt <- dt[!SchoolDistrict == '']
+dt <- tidyr::gather(dt, Year, Status, as.character(2007:2017))
+openxlsx::write.xlsx(dt, file='~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel Reformat.xlsx')
 ```
 
