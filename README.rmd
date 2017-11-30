@@ -111,9 +111,10 @@ These circumstances that discourage transfers matter because they result in many
 
 # Data Work Description
 
-Gather the raw school file to be in long rather than wide format.
+Gather the raw school file to be in long rather than wide format. Here is a subset of the output.
 
-```{r schoolsGather}
+
+```{r schoolsGather, echo=FALSE}
 dt <- data.table::fread('~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel.csv', header = TRUE)
 dt.cols <- which(names(dt) %in% c('School Name', 'School District', as.character(2007:2017)))
 dt <- dt[, dt.cols, with=FALSE]
@@ -121,5 +122,8 @@ data.table::setnames(dt, c('School Name', 'School District'), c('SchoolName', 'S
 dt <- dt[!SchoolDistrict == '']
 dt <- tidyr::gather(dt, Year, Status, as.character(2007:2017))
 openxlsx::write.xlsx(dt, file='~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel Reformat.xlsx')
+knitr::kable(head(dt))
 ```
+
+As of right now there are `r paste0(table(dt$Status), collapse=', ')` of status `r paste0(names(table(dt$Status)), collapse=', ')`. Where Status=0 is not failing, Status=1 is failing.
 
