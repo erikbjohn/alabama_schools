@@ -115,7 +115,7 @@ As of right now there are `r paste0(table(dt$Status), collapse=', ')` of status 
 
 # Meeting Notes
 
-## 11/30/2017 Razzolini, Ross, Johnson
+## 11/30/2017 Razzolini, Ross, Johnson, Mojica
 
 ```{r, echo=FALSE, eval=TRUE, out.width='450px'}
 knitr::include_graphics('~/Documents/Github/alabama_schools/Notes/notes_11_30_2017.jpg')
