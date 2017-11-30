@@ -20,7 +20,8 @@ This is a documentation for the Alabama schools project.
 ### Spreadsheet updates
 
 1. Add rows to the xlsx spreadsheet to include schools that never were failing and schools that entered later (This is only for public schools). 
-2. Add rows/update rows for schools on their closing year with a `2' in the *Status* field. 
+2. Add rows/update rows for schools on their closing year with a `2' in the *Status* field. $\checkmark$ 
+(Done in the new xlsx spreadsheet *[linkLocation](https://www.dropbox.com/s/ppctui3w1tpye05/Failing%20Schools%20Panel%20Reformat.xlsx?dl=0)*) 
 3. Add columns to the xlsx spreadsheet to include school type (magnet, k-12 10-12, magnet type, etc.)
 
 ### Data search (See if can locate information on )
@@ -102,6 +103,7 @@ dt.cols <- which(names(dt) %in% c('School Name', 'School District', as.character
 dt <- dt[, dt.cols, with=FALSE]
 data.table::setnames(dt, c('School Name', 'School District'), c('SchoolName', 'SchoolDistrict'))
 dt <- dt[!SchoolDistrict == '']
+for (i in seq_along(dt)) data.table::set(dt, i=which(is.na(dt[[i]])), j=i, value=2)
 dt <- tidyr::gather(dt, Year, Status, as.character(2007:2017))
 openxlsx::write.xlsx(dt, file='~/Dropbox/pkg.data/alabama_schools/raw/Failing Schools Panel Reformat.xlsx')
 knitr::kable(head(dt))
@@ -115,4 +117,8 @@ As of right now there are `r paste0(table(dt$Status), collapse=', ')` of status 
 
 ## 11/30/2017 Razzolini, Ross, Johnson
 
-![Johnson Notes for 11/30/2017](Notes/notes_11_30_2017.jpg)
+```{r, echo=FALSE, eval=TRUE, out.width='450px'}
+knitr::include_graphics('~/Documents/Github/alabama_schools/Notes/notes_11_30_2017.jpg')
+```
+
+`
